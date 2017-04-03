@@ -1,0 +1,94 @@
+
+
+TREE {
+	SUB PONCHO {
+		SUB NECK
+		{
+			SUB HEAD {
+				SUB ZIGS
+				SUB HAT
+			}		
+		}
+		
+		SUB RIGHTUPPERLEG {
+			SUB RIGHTSHIN {
+				SUB RIGHTSHOE
+			}
+		}
+		
+		SUB LEFTUPPERLEG {
+			SUB LEFTSHIN {
+				SUB LEFTSHOE
+			}
+		}	
+	}
+}
+
+ANIMATIONS {
+
+	ANIMATION IDLE {
+
+		FRAME {
+			DURATION 10
+			TREE {
+				SUB PONCHO {
+					TRANSLATION 100 100 0
+					ROTATION 10
+				
+					SUB NECK
+					{
+						TRANSLATION 100 100 0
+						ROTATION 10
+				
+						SUB HEAD {
+							TRANSLATION 100 100 0
+							ROTATION 10
+						
+							SUB ZIGS {
+								TRANSLATION 100 100 0
+								ROTATION 10
+							}
+						
+							SUB HAT {
+								TRANSLATION 100 100 0
+								ROTATION 10
+							}
+						}		
+					}
+				
+					SUB RIGHTUPPERLEG {
+						TRANSLATION 100 100 0
+						ROTATION 10
+					
+						SUB RIGHTSHIN {
+							TRANSLATION 100 100 0
+							ROTATION 10
+				
+							SUB RIGHTSHOE {
+								TRANSLATION 100 100 0
+								ROTATION 10
+							}
+						}
+					}
+				
+					SUB LEFTUPPERLEG {
+						TRANSLATION 100 100 0
+						ROTATION 10
+				
+						SUB LEFTSHIN {
+							TRANSLATION 100 100 0
+							ROTATION 10
+					
+							SUB LEFTSHOE {
+								TRANSLATION 100 100 0
+								ROTATION 10
+							}
+						}
+					}	
+				}	
+			}
+		}
+
+	
+	}
+}
