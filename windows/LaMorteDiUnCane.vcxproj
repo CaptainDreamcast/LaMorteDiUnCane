@@ -133,13 +133,20 @@ xcopy /E /I /Y ..\assets Release\assets</Command>
   <ItemGroup>
     <ClCompile Include="..\gamescreen.c" />
     <ClCompile Include="..\main.c" />
+    <ClCompile Include="..\player.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\gamescreen.h" />
+    <ClInclude Include="..\player.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="..\assets\level1\stage\STAGE1.txt">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</DeploymentContent>
+    </Text>
     <Text Include="..\assets\player\PLAYERTREE.txt">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</DeploymentContent>
     </Text>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

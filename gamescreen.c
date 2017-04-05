@@ -5,22 +5,32 @@
 #include <tari/input.h>
 #include <tari/wrapper.h>
 #include <tari/animationtree.h>
+#include <tari/stagehandler.h>
 
-static struct {
-	int x;
-
-} gData;
+#include "player.h"
 
 static void loadGameScreen() {
-	AnimationTree test = loadAnimationTree("assets/player/PLAYERTREE.txt");
-	playAnimationTreeLoop(makePosition(0, 0, 1), test, "IDLE");
+	setupAnimationTreeHandling();
+
+	loadStageFromScript("assets/level1/stage/STAGE1.txt");
+
+	loadPlayer();
 }
 
-static void unloadGameScreen() {}
+static void unloadGameScreen() {
+	shutdownAnimationTreeHandling();
+}
 
-static void updateGameScreen() {}
+static void updateGameScreen() {
+	updateAnimationTreeHandling();
+	
+	updatePlayer();
+}
 
-static void drawGameScreen() {}
+static void drawGameScreen() {
+	drawAnimationTreeHandling();
+
+}
 
 static Screen* getNextGameScreenScreen() {
 

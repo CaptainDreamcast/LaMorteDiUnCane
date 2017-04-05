@@ -2,23 +2,38 @@
 
 TREE {
 	SUB PONCHO {
+		ANIMATION 10 1 assets/player/PONCHO.pkg
 		SUB NECK
 		{
+			ANIMATION 10 1 assets/player/NECK.pkg
 			SUB HEAD {
-				SUB ZIGS
-				SUB HAT
+				ANIMATION 10 1 assets/player/HEAD.pkg
+				SUB ZIG {
+					ANIMATION 10 1 assets/player/ZIG.pkg
+				}
+				SUB HAT {
+					ANIMATION 10 1 assets/player/HAT.pkg
+				}
 			}		
 		}
 		
 		SUB RIGHTUPPERLEG {
+			ANIMATION 10 1 assets/player/RIGHTUPPERLEG.pkg
 			SUB RIGHTSHIN {
-				SUB RIGHTSHOE
+				ANIMATION 10  1 assets/player/RIGHTSHIN.pkg
+				SUB RIGHTSHOE {
+					ANIMATION 10 1 assets/player/RIGHTSHOE.pkg
+				}
 			}
 		}
 		
 		SUB LEFTUPPERLEG {
+			ANIMATION 10 1 assets/player/LEFTUPPERLEG.pkg
 			SUB LEFTSHIN {
-				SUB LEFTSHOE
+				ANIMATION 10 1 assets/player/LEFTSHIN.pkg
+				SUB LEFTSHOE {
+					ANIMATION 10 1 assets/player/LEFTSHOE.pkg
+				}
 			}
 		}	
 	}
@@ -26,6 +41,7 @@ TREE {
 
 ANIMATIONS {
 
+	
 	ANIMATION IDLE {
 
 		FRAME {
@@ -33,55 +49,120 @@ ANIMATIONS {
 			TREE {
 				SUB PONCHO {
 					TRANSLATION 100 100 0
-					ROTATION 10
+					ROTATION 0
 				
 					SUB NECK
 					{
-						TRANSLATION 100 100 0
-						ROTATION 10
+						TRANSLATION 22 -10 -1
+						ROTATION 0
 				
 						SUB HEAD {
-							TRANSLATION 100 100 0
-							ROTATION 10
+							TRANSLATION -5 -30 1
+							ROTATION 0
 						
-							SUB ZIGS {
-								TRANSLATION 100 100 0
-								ROTATION 10
+							SUB ZIG {
+								TRANSLATION 18 33 1
+								ROTATION 0
 							}
 						
 							SUB HAT {
-								TRANSLATION 100 100 0
-								ROTATION 10
+								TRANSLATION -16 -2 1
+								ROTATION 0
 							}
 						}		
 					}
 				
 					SUB RIGHTUPPERLEG {
-						TRANSLATION 100 100 0
-						ROTATION 10
+						TRANSLATION 15 50 -1
+						ROTATION 0
 					
 						SUB RIGHTSHIN {
-							TRANSLATION 100 100 0
-							ROTATION 10
+							TRANSLATION 1 17 1
+							ROTATION 0
 				
 							SUB RIGHTSHOE {
-								TRANSLATION 100 100 0
-								ROTATION 10
+								TRANSLATION -7 7 1
+								ROTATION 0
 							}
 						}
 					}
 				
 					SUB LEFTUPPERLEG {
-						TRANSLATION 100 100 0
-						ROTATION 10
+						TRANSLATION 35 50 -1
+						ROTATION 0
 				
 						SUB LEFTSHIN {
-							TRANSLATION 100 100 0
-							ROTATION 10
+							TRANSLATION -1 17 1
+							ROTATION 0
 					
 							SUB LEFTSHOE {
-								TRANSLATION 100 100 0
-								ROTATION 10
+								TRANSLATION -4 7 1
+								ROTATION 0
+							}
+						}
+					}	
+				}	
+			}
+		}
+	}
+
+
+	ANIMATION WHOA {
+
+		FRAME {
+			DURATION 10
+			TREE {
+				SUB PONCHO {
+					TRANSLATION 100 100 0
+					ROTATION 0
+				
+					SUB NECK
+					{
+						TRANSLATION 22 -10 -1
+						ROTATION 0
+				
+						SUB HEAD {
+							TRANSLATION -5 -30 1
+							ROTATION 45
+						
+							SUB ZIG {
+								TRANSLATION 18 33 1
+								ROTATION 0
+							}
+						
+							SUB HAT {
+								TRANSLATION -16 -2 1
+								ROTATION 0
+							}
+						}		
+					}
+				
+					SUB RIGHTUPPERLEG {
+						TRANSLATION 15 50 -1
+						ROTATION 0
+					
+						SUB RIGHTSHIN {
+							TRANSLATION 1 17 1
+							ROTATION 0
+				
+							SUB RIGHTSHOE {
+								TRANSLATION -7 7 1
+								ROTATION 0
+							}
+						}
+					}
+				
+					SUB LEFTUPPERLEG {
+						TRANSLATION 35 50 -1
+						ROTATION 0
+				
+						SUB LEFTSHIN {
+							TRANSLATION -1 17 1
+							ROTATION 0
+					
+							SUB LEFTSHOE {
+								TRANSLATION -4 7 1
+								ROTATION 0
 							}
 						}
 					}	
@@ -92,3 +173,5 @@ ANIMATIONS {
 	
 	}
 }
+
+

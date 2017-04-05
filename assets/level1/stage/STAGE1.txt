@@ -1,0 +1,15 @@
+
+STAGE {
+	LAYER {
+		POSITION_Z	-1
+		SCROLLING_FACTOR 1
+
+		CREATE
+		ELEMENT {
+			POSITION 0 0
+			PATH assets/level1/stage/BG.pkg
+			ANIMATION 10 1
+		}
+	}
+}
+
