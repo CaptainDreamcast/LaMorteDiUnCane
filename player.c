@@ -23,7 +23,4 @@ void updatePlayer() {
 		setHandledAnimationTreeAnimation(gData.animationID, "WHOA");
 	}
 
-	if (hasPressedXFlank()) {
-		setHandledAnimationTreeAnimation(gData.animationID, "WALKING");
-	}
 }

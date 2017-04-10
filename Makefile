@@ -1,5 +1,5 @@
 TARGET = 1ST_READ
-OBJS = main.o \
+OBJS = main.o gamescreen.o player.o \
 romdisk.o 
 OPTFLAGS=-O3 -fomit-frame-pointer -fno-delayed-branch -DDREAMCAST -Wall -Werror
 DEVELOP_CFLAGS= $(OPTFLAGS) -DDEVELOP
@@ -17,10 +17,14 @@ build_images: copy_debug genlevels
 
 copy_debug:
 	$(KOS_BASE)/utils/kmgenc/kmgenc -a4 $(wildcard assets/debug/*.png)
-	find assets/debug -name '*.kmg' | xargs tools/KOMPRESSOR/kompressor
+	find assets/debug -name '*.kmg' | xargs $(KOS_BASE)/addons/libtari/tools/KOMPRESSOR/kompressor
+	$(KOS_BASE)/utils/kmgenc/kmgenc -a4 $(wildcard assets/fonts/*.png)
+	find assets/fonts -name '*.kmg' | xargs $(KOS_BASE)/addons/libtari/tools/KOMPRESSOR/kompressor
 	mkdir romdisk_boot
 	mkdir romdisk_boot/fonts
 	cp assets/fonts/* romdisk_boot/fonts
+	find romdisk_boot/fonts/ -name '*.png' | xargs rm -f
+	find romdisk_boot/fonts/ -name '*.kmg' | xargs rm -f
 	mkdir romdisk_boot/debug
 	cp assets/debug/*.pkg romdisk_boot/debug
 	mkdir filesystem
@@ -33,7 +37,7 @@ genlevels:
 	cp -r assets/* filesystem/assets
 	
 	find filesystem/assets/ -name '*.png' | xargs $(KOS_BASE)/utils/kmgenc/kmgenc -a4 
-	find filesystem/assets/ -name '*.kmg' | xargs tools/KOMPRESSOR/kompressor
+	find filesystem/assets/ -name '*.kmg' | xargs $(KOS_BASE)/addons/libtari/tools/KOMPRESSOR/kompressor
 	find filesystem/assets/ -name '*.png' | xargs rm -f
 	find filesystem/assets/ -name '*.kmg' | xargs rm -f
 	find filesystem/assets/ -name '*.xcf' | xargs rm -f
