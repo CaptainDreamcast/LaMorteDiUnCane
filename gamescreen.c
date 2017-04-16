@@ -6,36 +6,60 @@
 #include <tari/wrapper.h>
 #include <tari/animationtree.h>
 #include <tari/stagehandler.h>
+#include <tari/collisionhandler.h>
 
 #include "player.h"
+#include "bullet.h"
+#include "stage.h"
+#include "enemies.h"
+#include "ui.h"
+#include "collision.h"
+#include "titlescreen.h"
+#include "gamelogic.h"
+#include "retryscreen.h"
+#include "shadow.h"
+#include "kidnapper.h"
 
 static void loadGameScreen() {
-	setupAnimationTreeHandling();
 
-	loadStageFromScript("assets/level1/stage/STAGE1.txt");
-
+	// activateCollisionHandlerDebugMode();
+	
+	loadGameLogic();
+	loadCollisions();
+	loadShadows();
+	loadStage();
+	setupBulletHandling();
 	loadPlayer();
+	loadKidnapper();
+	loadEnemies();
+	loadUI();
+	
 }
 
 static void unloadGameScreen() {
-	shutdownAnimationTreeHandling();
+	shutdownBulletHandling();
 }
 
 static void updateGameScreen() {
-	updateAnimationTreeHandling();
-	
+	updateBulletHandling();
 	updatePlayer();
+	updateKidnapper();
+	updateEnemies();
+	updateStage();
+	updateUI();
 }
 
 static void drawGameScreen() {
-	drawAnimationTreeHandling();
-
+	
 }
 
 static Screen* getNextGameScreenScreen() {
 
 	if (hasPressedAbortFlank()) {
-		abortScreenHandling();
+		return &TitleScreen;
+	}
+	else if (isLevelLost()) {
+		return &RetryScreen;
 	}
 
 	return NULL;

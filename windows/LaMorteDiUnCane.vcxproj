@@ -109,7 +109,8 @@
     <PostBuildEvent>
       <Command>copy /Y DLL\* Release
 xcopy /E /Y /I ..\assets\fonts Release\fonts
-xcopy /E /I /Y ..\assets Release\assets</Command>
+xcopy /E /I /Y ..\assets Release\assets
+xcopy /E /Y /I ..\assets\debug Release\debug</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -131,13 +132,36 @@ xcopy /E /I /Y ..\assets Release\assets</Command>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\bullet.c" />
+    <ClCompile Include="..\collision.c" />
+    <ClCompile Include="..\enemies.c" />
+    <ClCompile Include="..\gamelogic.c" />
     <ClCompile Include="..\gamescreen.c" />
+    <ClCompile Include="..\kidnapper.c" />
+    <ClCompile Include="..\logoscreen.c" />
     <ClCompile Include="..\main.c" />
     <ClCompile Include="..\player.c" />
+    <ClCompile Include="..\retryscreen.c" />
+    <ClCompile Include="..\shadow.c" />
+    <ClCompile Include="..\stage.c" />
+    <ClCompile Include="..\titlescreen.c" />
+    <ClCompile Include="..\ui.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\bullet.h" />
+    <ClInclude Include="..\collision.h" />
+    <ClInclude Include="..\enemies.h" />
+    <ClInclude Include="..\gamelogic.h" />
     <ClInclude Include="..\gamescreen.h" />
+    <ClInclude Include="..\kidnapper.h" />
+    <ClInclude Include="..\logoscreen.h" />
     <ClInclude Include="..\player.h" />
+    <ClInclude Include="..\retryscreen.h" />
+    <ClInclude Include="..\shadow.h" />
+    <ClInclude Include="..\stage.h" />
+    <ClInclude Include="..\titlescreen.h" />
+    <ClInclude Include="..\ui.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\assets\level1\stage\STAGE1.txt">
@@ -148,6 +172,13 @@ xcopy /E /I /Y ..\assets Release\assets</Command>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
       <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</DeploymentContent>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="LaMorteDiUnCane.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\boot\LaMorteDiUnCane.ico" />
+    <Image Include="icon1.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
