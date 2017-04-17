@@ -1,5 +1,7 @@
 TARGET = 1ST_READ
-OBJS = main.o gamescreen.o player.o \
+OBJS = main.o gamescreen.o player.o bullet.o collision.o enemies.o \
+gamelogic.o kidnapper.o logoscreen.o retryscreen.o shadow.o \
+stage.o  titlescreen.o ui.o \
 romdisk.o 
 OPTFLAGS=-O3 -fomit-frame-pointer -fno-delayed-branch -DDREAMCAST -Wall -Werror
 DEVELOP_CFLAGS= $(OPTFLAGS) -DDEVELOP

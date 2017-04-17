@@ -22,7 +22,7 @@ static void setLogoScreenOver(void* caller) {
 static void loadLogoScreen() {
 
 	gData.logo = loadTexture("assets/sprites/LOGO.pkg");
-	gData.animationID = playAnimationLoop(makePosition(0,0,0), &gData.logo, createOneFrameAnimation(), makeRectangleFromTexture(gData.logo));
+	gData.animationID = playAnimationLoop(makePosition(0,0,1), &gData.logo, createOneFrameAnimation(), makeRectangleFromTexture(gData.logo));
 	fadeInAnimation(gData.animationID, 60);
 
 	addTimerCB(180, setLogoScreenOver, NULL);
