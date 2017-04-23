@@ -140,6 +140,7 @@ xcopy /E /Y /I ..\assets\debug Release\debug</Command>
     <ClCompile Include="..\kidnapper.c" />
     <ClCompile Include="..\logoscreen.c" />
     <ClCompile Include="..\main.c" />
+    <ClCompile Include="..\manualenemy.c" />
     <ClCompile Include="..\player.c" />
     <ClCompile Include="..\retryscreen.c" />
     <ClCompile Include="..\shadow.c" />
@@ -155,6 +156,7 @@ xcopy /E /Y /I ..\assets\debug Release\debug</Command>
     <ClInclude Include="..\gamescreen.h" />
     <ClInclude Include="..\kidnapper.h" />
     <ClInclude Include="..\logoscreen.h" />
+    <ClInclude Include="..\manualenemy.h" />
     <ClInclude Include="..\player.h" />
     <ClInclude Include="..\retryscreen.h" />
     <ClInclude Include="..\shadow.h" />

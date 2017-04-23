@@ -57,6 +57,9 @@
     <ClCompile Include="..\logoscreen.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\manualenemy.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\gamescreen.h">
@@ -99,6 +102,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\logoscreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\manualenemy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

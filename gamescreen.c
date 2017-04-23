@@ -19,6 +19,7 @@
 #include "retryscreen.h"
 #include "shadow.h"
 #include "kidnapper.h"
+#include "manualenemy.h"
 
 static void loadGameScreen() {
 
@@ -32,6 +33,7 @@ static void loadGameScreen() {
 	loadPlayer();
 	loadKidnapper();
 	loadEnemies();
+	loadManualEnemy();
 	loadUI();
 	
 }
@@ -45,6 +47,7 @@ static void updateGameScreen() {
 	updatePlayer();
 	updateKidnapper();
 	updateEnemies();
+	updateManualEnemy();
 	updateStage();
 	updateUI();
 }

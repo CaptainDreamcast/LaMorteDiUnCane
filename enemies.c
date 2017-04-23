@@ -11,7 +11,9 @@
 #include <tari/physicshandler.h>
 #include <tari/collisionhandler.h>
 
+
 #include "collision.h"
+#include "manualenemy.h"
 
 typedef struct {
 	int physicsID;
@@ -74,7 +76,7 @@ static void loadEnemyTextures() {
 void loadEnemies() {
 	loadEnemyTextures();
 
-	gData.z = 3;
+	gData.z = 4;
 	gData.enemyCreationProb = 2;
 
 	gData.enemies = new_list();
@@ -88,7 +90,7 @@ static void removeEnemy(Enemy* e) {
 
 void enemyHitCB(void* caller, void* collisionData);
 
-static void addEnemy(Position pos, Velocity vel, double scale) {
+void addEnemy(Position pos, Velocity vel, double scale) {
 	Enemy* e = allocMemory(sizeof(Enemy));
 
 	e->physicsID = addToPhysicsHandler(pos);
@@ -161,6 +163,8 @@ static void createNewEnemy() {
 }
 
 static void handleEnemyCreation() {
+	if (isManual()) return;
+
 	double prob = randfrom(0,100);
 
 	if (prob > gData.enemyCreationProb) {

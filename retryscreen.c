@@ -1,6 +1,7 @@
 #include "retryscreen.h"
 
 #include <stdlib.h>
+#include <math.h>
 
 #include <tari/input.h>
 #include <tari/animation.h>
@@ -71,7 +72,10 @@ static void updateRetryScreen() {
 }
 
 static void drawTravelledDistance() { // TODO: import playbill font properly (will never ever happen though, but hey)
+	gData.distanceTravelled = fmin(gData.distanceTravelled, 99.99);
+	
 	int dist = (int)gData.distanceTravelled;
+
 	int firstDig = (dist / 10) % 10;
 	int secondDig = dist % 10;
 

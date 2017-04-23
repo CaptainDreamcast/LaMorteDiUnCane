@@ -82,7 +82,7 @@ void playerHit(void* caller, void* collisionData);
 void loadPlayer() {
 	loadPlayerTextures();
 
-	gData.physicsID = addToPhysicsHandler(makePosition(100,350,5));
+	gData.physicsID = addToPhysicsHandler(makePosition(100,350,6));
 	setHandledPhysicsDragCoefficient(gData.physicsID, makePosition(0.2, 0.2, 0));
 	setHandledPhysicsMaxVelocity(gData.physicsID, 4);
 	gData.accel = 1;
