@@ -145,12 +145,12 @@ static void updateMovementInput() {
 	}
 }
 
-static void updateInput() {
+static void updateManualEnemyInput() {
 	updateStatusInput();
 	updateShootingInput();
 	updateMovementInput();
 }
 
 void updateManualEnemy() {
-	updateInput();
+	updateManualEnemyInput();
 }
