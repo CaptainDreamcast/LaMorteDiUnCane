@@ -7,3 +7,5 @@ void shutdownBulletHandling();
 void updateBulletHandling();
 
 void addBullet(Position pos, double angle);
+void reloadBullet();
+int getBulletAmount();

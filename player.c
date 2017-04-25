@@ -40,6 +40,10 @@ static struct {
 	Duration shotCooldownNow;
 	Duration shotCooldown;
 
+	int isInReloadCooldown;
+	Duration reloadCooldownNow;
+	Duration reloadCooldown;
+
 	Position* pos;
 
 	CollisionData colData;
@@ -102,6 +106,10 @@ void loadPlayer() {
 	gData.shotCooldownNow = 0;
 	gData.shotCooldown = 20;
 
+	gData.isInReloadCooldown = 0;
+	gData.reloadCooldownNow = 0;
+	gData.reloadCooldown = 20;
+
 	gData.colData.listID = getPlayerCollisionListID();
 	gData.colData.direction = &getPhysicsFromHandler(gData.physicsID)->mVelocity;
 	CollisionRect rect = makeCollisionRect(makePosition(48, 32, 0), makePosition(48+40, 32+18, 1));
@@ -160,16 +168,25 @@ static void handleArmDirection() {
 	setArmActive(gData.armAngle);
 }
 
-static void handleShotCooldown() {
-	if (!gData.isInShotCooldown) return;
+static void handleCooldown(int* flag, Duration* now, Duration duration) {
+	if (!*flag) return;
 
-	if (handleDurationAndCheckIfOver(&gData.shotCooldownNow, gData.shotCooldown)) {
-		gData.isInShotCooldown = 0;
+	if (handleDurationAndCheckIfOver(now, duration)) {
+		*flag = 0;
 	}
 }
 
+static void handleShotCooldown() {
+	handleCooldown(&gData.isInShotCooldown, &gData.shotCooldownNow, gData.shotCooldown);
+}
+
+static void handleReloadCooldown() {
+	handleCooldown(&gData.isInReloadCooldown, &gData.reloadCooldownNow, gData.reloadCooldown);
+}
+
+
 static void handleShotFireAttempt() {
-	if (gData.isInShotCooldown || gData.armAnimationID == -1) return;
+	if (gData.isInShotCooldown || gData.armAnimationID == -1 || !getBulletAmount()) return;
 
 	Position bulletPos = vecAdd(*gData.pos, vecRotateZ(makePosition(35, 0, 0), -gData.armAngle));
 	bulletPos = vecAdd(vecAdd(bulletPos, gData.armRotationPoint), gData.armPosition);
@@ -180,12 +197,26 @@ static void handleShotFireAttempt() {
 	gData.isInShotCooldown = 1;
 }
 
+static void handleReloadAttempt() {
+	if (gData.isInReloadCooldown || gData.armAnimationID != -1 || getBulletAmount() == 6) return;
+
+	reloadBullet();
+
+	gData.reloadCooldownNow = 0;
+	gData.isInReloadCooldown = 1;
+}
+
 static void handleShots() {
 
 	handleShotCooldown();
+	handleReloadCooldown();
 	
 	if (hasPressedR()) {
 		handleShotFireAttempt();
+	}
+
+	if (hasPressedL()) {
+		handleReloadAttempt();
 	}
 
 
