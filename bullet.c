@@ -9,6 +9,7 @@
 #include <tari/memoryhandler.h>
 #include <tari/collisionhandler.h>
 #include <tari/log.h>
+#include <tari/math.h>
 
 #include "collision.h"
 
