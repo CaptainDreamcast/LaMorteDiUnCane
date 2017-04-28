@@ -88,11 +88,11 @@ static void updateStatusInput() {
 }
 
 static void shoot() {
-	Position p = makePosition(gData.pos->x-64, -128, gData.pos->z+1);
-	Velocity v = vecRotateZ(makePosition(gData.scale, 0, 0), -gData.angle);
 	double scale = randfrom(0.8, 1.2);
+	Position p = makePosition(gData.pos->x-64, -scale*128, gData.pos->z+1);
+	Velocity v = vecRotateZ(makePosition(gData.scale, 0, 0), -gData.angle);
+	
 	addEnemy(p, v, scale);
-
 	gData.isInCooldown = 1;
 }
 

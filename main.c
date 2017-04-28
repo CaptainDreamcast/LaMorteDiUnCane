@@ -22,46 +22,46 @@ KOS_INIT_ROMDISK(romdisk);
 
 
 void exitGame() {
-  shutdownTariWrapper();
+	shutdownTariWrapper();
 
 #define DEVELOP
 
 #ifdef DEVELOP
-  abortSystem();
+	abortSystem();
 #else
-  returnToMenu();
+	returnToMenu();
 #endif
 }
 
 void setMainFileSystem() {
-	#ifdef DEVELOP
-		setFileSystem("/pc");
-	#else
-		setFileSystem("/rd");
-	#endif
+#ifdef DEVELOP
+	setFileSystem("/pc");
+#else
+	setFileSystem("/rd");
+#endif
 }
 
 int main(int argc, char** argv) {
 
-  setGameName("LA MORTE DI UN CANE");
-  setScreenSize(640, 480);
+	setGameName("LA MORTE DI UN CANE");
+	setScreenSize(640, 480);
 
-  initTariWrapperWithDefaultFlags();
+	initTariWrapperWithDefaultFlags();
 
-  logg("Check framerate");
-  FramerateSelectReturnType framerateReturnType = selectFramerate();
-  if (framerateReturnType == FRAMERATE_SCREEN_RETURN_ABORT) {
-    exitGame();
-  }
-  
-  setMainFileSystem();
+	logg("Check framerate");
+	FramerateSelectReturnType framerateReturnType = selectFramerate();
+	if (framerateReturnType == FRAMERATE_SCREEN_RETURN_ABORT) {
+		exitGame();
+	}
 
-  startScreenHandling(&LogoScreen);
+	setMainFileSystem();
 
-  exitGame();
+	startScreenHandling(&LogoScreen);
+
+	exitGame();
 
 
-  return (1);
+	return (1);
 }
 
 

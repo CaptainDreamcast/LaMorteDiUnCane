@@ -46,6 +46,7 @@ static struct {
 	double z;
 
 	double enemyCreationProb;
+	double enemyMaxScale;
 } gData;
 
 static void loadEnemyTextures() {
@@ -78,6 +79,7 @@ void loadEnemies() {
 
 	gData.z = 4;
 	gData.enemyCreationProb = 2;
+	gData.enemyMaxScale = 1;
 
 	gData.enemies = new_list();
 }
@@ -149,15 +151,15 @@ void enemyHitCB(void* caller, void* collisionData) {
 static void createNewEnemy() {
 	
 	double x = randfrom(-10, 700);
-	double y = -150;
+
+	double scale = randfrom(0.5, gData.enemyMaxScale);
+	double y = -150*scale;
 
 	double dx = randfrom(-3, 3);
 	double dy = randfrom(0.1, 5);
 
 	Position pos = makePosition(x, y, gData.z);
 	Velocity vel = makePosition(dx, dy, 0);
-
-	double scale = randfrom(0.5, 1);
 
 	addEnemy(pos, vel, scale);
 }
@@ -168,7 +170,10 @@ static void handleEnemyCreation() {
 	double prob = randfrom(0,100);
 
 	if (prob > gData.enemyCreationProb) {
-		gData.enemyCreationProb += 0.005;
+		gData.enemyCreationProb += 0.0005;
+		gData.enemyCreationProb = min(gData.enemyCreationProb, 5);
+		gData.enemyMaxScale += 0.0001;
+		gData.enemyMaxScale = min(gData.enemyMaxScale, 4);
 		return;
 	}
 	createNewEnemy();
@@ -198,7 +203,7 @@ static void playEnemyDeathAnimation(Position p, double scale) {
 static int handleSingleEnemyUpdate(void* caller, void* data) {
 	Enemy* e = data;
 	
-	e->rotation += (1-e->scale)*0.2;
+	e->rotation += (1 / e->scale) * 0.1;
 	Position c = makePosition(gData.enemyTexture[0].mTextureSize.x / 2, gData.enemyTexture[0].mTextureSize.y / 2, 0);
 	setAnimationRotationZ(e->animationID, e->rotation, c);
 
@@ -207,7 +212,7 @@ static int handleSingleEnemyUpdate(void* caller, void* data) {
 	double dy = gData.enemyTexture[0].mTextureSize.y;
 	double uy = p.y + dy / 2 + scale*(dy / 2);
 
-	if (p.x < -200 || p.y < -300 || p.x > 700 || uy > 428) {
+	if (p.x < -200 || p.y < -700 || p.x > 700 || uy > 428) {
 		removeEnemy(e);
 		if (uy > 428) {
 			playEnemyDeathAnimation(p, scale);
