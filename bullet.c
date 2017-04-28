@@ -29,7 +29,6 @@ static struct {
 
 	TextureData bulletsLeftTexture;
 	int bulletsLeftID;
-	int loadedBulletAmount;
 
 	int bulletsLeft;
 	int bulletsLeftDisplayIDs[6];
