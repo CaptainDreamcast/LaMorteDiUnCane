@@ -25,7 +25,7 @@ static void loadLogoScreen() {
 	gData.animationID = playAnimationLoop(makePosition(0,0,1), &gData.logo, createOneFrameAnimation(), makeRectangleFromTexture(gData.logo));
 	fadeInAnimation(gData.animationID, 60);
 
-	addTimerCB(180, setLogoScreenOver, NULL);
+	addTimerCB(260, setLogoScreenOver, NULL);
 	gData.mIsOver = 0;
 }
 
