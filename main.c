@@ -24,8 +24,6 @@ KOS_INIT_ROMDISK(romdisk);
 void exitGame() {
 	shutdownTariWrapper();
 
-#define DEVELOP
-
 #ifdef DEVELOP
 	abortSystem();
 #else
