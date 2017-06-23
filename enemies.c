@@ -110,7 +110,7 @@ void addEnemy(Position pos, Velocity vel, double scale) {
 
 	Position center = makePosition(gData.enemyTexture[0].mTextureSize.x / 2, gData.enemyTexture[0].mTextureSize.y / 2, 0);
 	setAnimationScale(e->animationID, makePosition(e->scale, e->scale, 1), center);
-	setAnimationRotationZ(e->animationID, e->rotation, center);
+	setAnimationRotationZ(e->animationID, e->rotation, vecScale(center, e->scale));
 
 	e->colData.listID = getEnemyCollisionListID();
 	e->colData.direction = e->vel;
@@ -205,7 +205,7 @@ static int handleSingleEnemyUpdate(void* caller, void* data) {
 	
 	e->rotation += (1 / e->scale) * 0.1;
 	Position c = makePosition(gData.enemyTexture[0].mTextureSize.x / 2, gData.enemyTexture[0].mTextureSize.y / 2, 0);
-	setAnimationRotationZ(e->animationID, e->rotation, c);
+	setAnimationRotationZ(e->animationID, e->rotation, vecScale(c, e->scale));
 
 	Position p = *e->pos;
 	double scale = e->scale;
