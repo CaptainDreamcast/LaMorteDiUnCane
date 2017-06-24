@@ -1,0 +1,4 @@
+OBJS = main.o gamescreen.o player.o bullet.o collision.o enemies.o \
+gamelogic.o kidnapper.o logoscreen.o retryscreen.o shadow.o \
+stage.o  titlescreen.o ui.o manualenemy.o 
+OUTPUT_FILE_NAME = LaMorteDiUnCane
